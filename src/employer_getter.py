@@ -23,10 +23,3 @@ class HhParser:
 
 
 
-
-if __name__=='__main__':
-    test_1 = HhParser()
-    # test_1.get_employer()
-    test_1.employer_info()
-    for employer in test_1.employers_data:
-        print(employer)
