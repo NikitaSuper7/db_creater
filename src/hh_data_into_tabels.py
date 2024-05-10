@@ -5,6 +5,7 @@ from vacansies import Vacansy
 import psycopg2
 
 if __name__ == '__main__':
+    # для заливки свежих данных в БД
     db = DbAdmin(host=connector['host'], database='hh_data', user=connector['user'],
                  password=connector['password'])
     db._delete_table('employers')

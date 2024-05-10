@@ -1,4 +1,3 @@
-from employer_getter import HhParser, hh_params, hh_headers
 from employers import Employe
 import requests
 import time
@@ -12,7 +11,7 @@ class Vacansy:
                  link: str,
                  vac_type: str):
         self.employer_id = employer_id
-        self.vac_id = vac_id
+        self.vac_id = int(vac_id)
         self.name = name
         self.description = description
         self.salary = salary
@@ -100,9 +99,9 @@ class Vacansy:
         return cls.all_vacancies
 
 
-if __name__=='__main__':
-    Employe.employ_maker()
-    print(Vacansy._make_objects())
+# if __name__=='__main__':
+#     Employe.employ_maker()
+#     print(Vacansy._make_objects())
     # print(Vacansy.all_vacancies[:4])
     # test_1 = []
     # respond = requests.get('https://api.hh.ru/vacancies?employer_id=1299873')
