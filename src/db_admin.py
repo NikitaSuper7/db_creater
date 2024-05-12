@@ -18,6 +18,7 @@ class DbAdmin:
         connect = psycopg2.connect(host=self.host, database=self.database, user=self.user, password=self.password)
         cursor = connect.cursor()
         request_del = f"""DROP DATABASE IF EXISTS {name}"""
+        connect.autocommit = True
         cursor.execute(request_del)
         connect.commit()
         cursor.close()
@@ -28,6 +29,7 @@ class DbAdmin:
         connect = psycopg2.connect(host=self.host, database=self.database, user=self.user, password=self.password)
         cursor = connect.cursor()
         request_create = f"""CREATE DATABASE {name}"""
+        connect.autocommit = True
         cursor.execute(request_create)
         # connect.commit()
 
@@ -103,7 +105,7 @@ class DbAdmin:
         cursor.close()
         connect.close()
 
-    def get_companies_and_vacancies_count(self):
+    def get_companies_and_vacancies_count(self) -> pd.DataFrame:
         """Получаем список компаний и кол-во вакансий."""
         connect = psycopg2.connect(host=self.host, database=self.database, user=self.user, password=self.password)
         cursor = connect.cursor()
@@ -125,7 +127,7 @@ class DbAdmin:
         connect.close()
         return df
 
-    def get_all_vacancies(self):
+    def get_all_vacancies(self) -> pd.DataFrame:
         """получает список всех вакансий с указанием названия компании,
         названия вакансии и зарплаты и ссылки на вакансию."""
         connect = psycopg2.connect(host=self.host, database=self.database, user=self.user, password=self.password)
@@ -146,7 +148,7 @@ class DbAdmin:
         connect.close()
         return df
 
-    def get_avg_salary(self):
+    def get_avg_salary(self) -> pd.DataFrame:
         """получает среднюю зарплату по вакансиям."""
         connect = psycopg2.connect(host=self.host, database=self.database, user=self.user, password=self.password)
         cursor = connect.cursor()
@@ -164,7 +166,7 @@ class DbAdmin:
         connect.close()
         return df
 
-    def get_vacancies_with_higher_salary(self):
+    def get_vacancies_with_higher_salary(self) -> pd.DataFrame:
         """получает список всех вакансий, у которых зарплата выше средней по всем вакансиям."""
         connect = psycopg2.connect(host=self.host, database=self.database, user=self.user, password=self.password)
         cursor = connect.cursor()
@@ -186,7 +188,7 @@ class DbAdmin:
         connect.close()
         return df
 
-    def get_vacancies_with_keyword(self, keywords: list):
+    def get_vacancies_with_keyword(self, keywords: list) -> pd.DataFrame:
         """получает список всех вакансий, в названии которых содержатся переданные в метод слова, например python."""
         for keyword in range(len(keywords)):
             keyword_1 = f"'%{keywords[keyword]}%'"
@@ -212,11 +214,13 @@ class DbAdmin:
 
 
 
-# if __name__ == '__main__':
-#     test_1 = DbAdmin()
+if __name__ == '__main__':
+    test_1 = DbAdmin()
     # print(test_1.get_vacancies_with_higher_salary().head())
     # print(test_1.get_vacancies_with_keyword(['разработчик'])['name'])
-    # test_1._create_db('test_3')
+    test_1._create_db('test_3')
     # test_1._delete_table('test_test')
     # test_1._create_table('test_test', test_id='serial', name='varchar(50)')
     # test_1._insert_into_table('test_test', ['name'], ('Luna'), ('Simba'))
+
+# conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_READ_COMMITTED) - настройка уровня изоляции.
