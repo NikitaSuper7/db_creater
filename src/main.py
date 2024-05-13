@@ -6,6 +6,7 @@ from bd_connector import connector
 # dict_methods = {1:}
 
 def main():
+    """Воспроизводит функционал для пользователя."""
     print("Hello dear user")
     sql_data = DbAdmin()
     while True:
