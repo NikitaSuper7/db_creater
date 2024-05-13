@@ -2,7 +2,11 @@ from bd_connector import connector
 from db_admin import DbAdmin
 from employers import Employe
 from vacansies import Vacansy
-import psycopg2
+# import psycopg2
+from bd_connector import connector
+
+# import pandas as pd
+# import psycopg2
 
 if __name__ == '__main__':
     # для заливки свежих данных в БД
@@ -24,3 +28,14 @@ if __name__ == '__main__':
                               (vacansy.vac_id, vacansy.employer_id, vacansy.name, vacansy.salary, vacansy.location,
                                vacansy.link))
 
+    # connect = psycopg2.connect(host=connector['host'], database='hh_data', user=connector['user'],
+    #              password=connector['password'])
+    cursor = db.connect.cursor()
+    request_primary = """alter table employers add primary key (employer_id)"""
+    request = """alter table vacancies add constraint fk_vacancies_department_id 
+    foreign key (employer_id) references employers(employer_id)"""
+    cursor.execute(request_primary)
+    cursor.execute(request)
+    db.connect.commit()
+    cursor.close()
+    db.connect.close()
