@@ -1,6 +1,7 @@
 import psycopg2
 from bd_connector import connector
 import pandas as pd
+import openpyxl
 
 
 class DbAdmin:
@@ -125,6 +126,10 @@ class DbAdmin:
 
         df = pd.DataFrame(data, columns=columns)
         cursor.close()
+        print(df)
+        want_to_save = input("Do you want to save the data? (y/n): ").lower().strip()
+        if want_to_save == 'y':
+            self.excel_saver(df)
         # connect.close()
         return df
 
@@ -146,6 +151,10 @@ class DbAdmin:
 
         df = pd.DataFrame(data, columns=columns)
         cursor.close()
+        print(df)
+        want_to_save = input("Do you want to save the data? (y/n): ").lower().strip()
+        if want_to_save == 'y':
+            self.excel_saver(df)
         # self.connect.close()
         return df
 
@@ -164,6 +173,10 @@ class DbAdmin:
 
         df = pd.DataFrame(data, columns=columns)
         cursor.close()
+        print(df)
+        want_to_save = input("Do you want to save the data? (y/n): ").lower().strip()
+        if want_to_save == 'y':
+            self.excel_saver(df)
         # self.connect.close()
         return df
 
@@ -186,6 +199,10 @@ class DbAdmin:
 
         df = pd.DataFrame(data, columns=columns)
         cursor.close()
+        print(df)
+        want_to_save = input("Do you want to save the data? (y/n): ").lower().strip()
+        if want_to_save == 'y':
+            self.excel_saver(df)
         # connect.close()
         return df
 
@@ -209,19 +226,21 @@ class DbAdmin:
 
         df = pd.DataFrame(data, columns=columns)
         cursor.close()
+        print(df)
+        want_to_save = input("Do you want to save the data? (y/n): ").lower().strip()
+        if want_to_save == 'y':
+            self.excel_saver(df)
         # connect.close()
+        # print(df.columns)
+        # df.to_excel('test_file.xlsx')
         return df
 
+    def excel_saver(self, data):
+        """Сохраняет данные в excel"""
+        file_name = input('Введите название файла:')
+        data.to_excel(f'{file_name}.xlsx', index=False)
 
 
 
-# if __name__ == '__main__':
-    # test_1 = DbAdmin()
-    # print(test_1.get_vacancies_with_higher_salary().head())
-    # print(test_1.get_vacancies_with_keyword(['разработчик'])['name'])
-    # test_1._create_db('test_3')
-    # test_1._delete_table('test_test')
-    # test_1._create_table('test_test', test_id='serial', name='varchar(50)')
-    # test_1._insert_into_table('test_test', ['name'], ('Luna'), ('Simba'))
 
-# conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_READ_COMMITTED) - настройка уровня изоляции.
+
