@@ -64,7 +64,7 @@ class DbAdmin:
         """Удаляет таблицу"""
         # connect = psycopg2.connect(host=self.host, database=self.database, user=self.user, password=self.password)
         cursor = self.connect.cursor()
-        request = f"""DROP TABLE IF EXISTS {table_name}"""
+        request = f"""DROP TABLE IF EXISTS {table_name} CASCADE"""
         cursor.execute(request)
         self.connect.commit()
         cursor.close()

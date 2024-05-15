@@ -3,12 +3,13 @@ from db_admin import DbAdmin
 from employers import Employe
 from vacansies import Vacansy
 # import psycopg2
-from bd_connector import connector
+# from bd_connector import connector
 
 # import pandas as pd
 # import psycopg2
 
-if __name__ == '__main__':
+def hh_data_into_t():
+    """функция для заливки данных в БД"""
     # для заливки свежих данных в БД
     db = DbAdmin(host=connector['host'], database='hh_data', user=connector['user'],
                  password=connector['password'])

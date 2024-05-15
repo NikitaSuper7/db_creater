@@ -2,6 +2,7 @@ from db_admin import DbAdmin
 from employers import Employe
 from vacansies import Vacansy
 from bd_connector import connector
+from hh_data_into_tabels import hh_data_into_t
 
 # dict_methods = {1:}
 
@@ -15,6 +16,7 @@ def main():
         3 - вывести на экран среднюю зарплату по вакансиям.
         4 - вывести на экран список всех вакансий, у которых зарплата выше средней по всем вакансиям.
         5 - вывести на экран список всех вакансий, в названии которых содержится ключевое слово.
+        6 - Перезалить данные в таблицы
         0 - завершение программы""")
         answer = int(input('Your answer is: '))
         if answer == 0:
@@ -37,6 +39,9 @@ def main():
             sql_data.get_vacancies_with_keyword(keywords_2)
             # data = sql_data.get_vacancies_with_keyword(keywords_2)
             # print(data.columns)
+        elif answer == 6:
+            hh_data_into_t()
+            print("Данные перезалиты")
         else:
             print("Команда не распознана, пожалуйста выберите снова: ")
 
