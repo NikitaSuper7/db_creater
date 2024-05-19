@@ -4,7 +4,6 @@ from vacansies import Vacansy
 from bd_connector import connector
 from hh_data_into_tabels import hh_data_into_t
 
-# dict_methods = {1:}
 
 def main():
     """Воспроизводит функционал для пользователя."""

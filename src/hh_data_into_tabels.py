@@ -1,4 +1,4 @@
-from bd_connector import connector
+from config import config
 from db_admin import DbAdmin
 from employers import Employe
 from vacansies import Vacansy
@@ -7,6 +7,8 @@ from vacansies import Vacansy
 
 # import pandas as pd
 # import psycopg2
+
+connector = config()
 
 def hh_data_into_t():
     """функция для заливки данных в БД"""

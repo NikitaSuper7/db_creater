@@ -1,8 +1,10 @@
 import psycopg2
-from bd_connector import connector
+from config import config
 import pandas as pd
 import openpyxl
+from config import config
 
+connector = config()
 
 class DbAdmin:
     """Класс для управление Базой данных."""
@@ -239,6 +241,14 @@ class DbAdmin:
         """Сохраняет данные в excel"""
         file_name = input('Введите название файла:')
         data.to_excel(f'{file_name}.xlsx', index=False)
+
+# if __name__ == '__main__':
+#     test_1 = DbAdmin()
+#     test_1.get_avg_salary()
+#     # print(test_1.host)
+#     # print(test_1.database)
+#     # print(test_1.user)
+#     # print(test_1.password)
 
 
 
