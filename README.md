@@ -14,11 +14,5 @@ connector - Здесь содержаться данные для подключ
 
 ### main.py - функционал для работы с пользователем.
 
-файл bd_connector.py - это файл со словарем, следующей структуры:
-connector = {
-    'host': 'localhost',
-    'database': 'test_2',
-    'user': 'postgres',
-    'password': 'example'
-}
-вам нужно создать такой файл в корне и в значения подставить свои данные.
+в проекте есть файл config.py. В данном файле функция для парсинга конфиг. файла database.ini.
+Вам нужно создать собственный файл database.ini и передать туда секцию [postgresql], hos, database, user, password.
