@@ -161,3 +161,4 @@ cython_debug/
 bd_connector.py
 __pycache__/
 test.py
+database.ini
