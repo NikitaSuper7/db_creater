@@ -1,7 +1,5 @@
 import psycopg2
-from config import config
 import pandas as pd
-import openpyxl
 from config import config
 
 connector = config()

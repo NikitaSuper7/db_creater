@@ -1,7 +1,4 @@
 from db_admin import DbAdmin
-from employers import Employe
-from vacansies import Vacansy
-from bd_connector import connector
 from hh_data_into_tabels import hh_data_into_t
 
 

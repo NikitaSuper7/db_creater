@@ -2,11 +2,7 @@ from config import config
 from db_admin import DbAdmin
 from employers import Employe
 from vacansies import Vacansy
-# import psycopg2
-# from bd_connector import connector
 
-# import pandas as pd
-# import psycopg2
 
 connector = config()
 
